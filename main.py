@@ -74,7 +74,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         msg.exec_()
         with open('version.txt') as version:
             current_version = int(version.read())
-            print(current_version)
             url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/version.txt'
             latest_version = int(requests.get(url).content)
             if latest_version > current_version:
@@ -109,8 +108,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         dst = ''
         with open('gamepath.txt') as gamepath:
             dst = gamepath.read()[:-12]
-        print(src)
-        print(dst)
         a = distutils.dir_util.copy_tree(src, dst)
 
         msg = QtWidgets.QMessageBox()
@@ -148,7 +145,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 i = 0
                 while i < len(srcfiles):
                     try:
-                        shutil.copy2(srcfiles[i],dstfiles[i])
+                        shutil.copy2(srcfiles[i], dstfiles[i])
                     except:
                         print(srcfiles[i] + ' unavailable most probably. skipping')
                     i += 1
@@ -182,7 +179,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             src = gamepath.read()[:-12]
             src += 'dgtool/' + self.requiredBuild
         if not os.path.isdir(src):
-            print('backup unavailable. cannot upgrade')
+            msg = QtWidgets.QMessageBox()
+            msg.setText("Backup unavailable. Cannot restore. Please use Steam's Verify File Integrity feature to go back to the latest version.")
+            msg.setWindowTitle("Upgrade failed")
+            msg.exec_()
             return
 
         msg = QtWidgets.QMessageBox()
