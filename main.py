@@ -75,7 +75,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         with open('version.txt') as version:
             current_version = int(version.read())
             print(current_version)
-            url = 'https://gitcdn.link/repo/cyanide-aoe2/wololo-downgrader/master/version.txt'
+            url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/version.txt'
             latest_version = int(requests.get(url).content)
             if latest_version > current_version:
                 update = QtWidgets.QMessageBox()
@@ -87,7 +87,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def populateVersionList(self):
         # get the latest versionlist.json file (which has the details for every game update)
-        url = 'https://gitcdn.link/repo/cyanide-aoe2/wololo-downgrader/master/versionlist.json'
+        url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/versionlist.json'
         versionListFile = requests.get(url)
         self.versions = versionListFile.json()
 
