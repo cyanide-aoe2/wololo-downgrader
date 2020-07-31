@@ -1,7 +1,5 @@
-import sys
-import os
-from PyQt5 import QtWidgets, uic, QtCore
-from PyQt5.QtWidgets import QMainWindow, QAction, QFileDialog, QApplication
+from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtWidgets import QFileDialog
 from pathlib import Path
 from MainWindow import Ui_MainWindow
 import fileinfo
@@ -11,9 +9,6 @@ import requests
 from distutils import dir_util
 import os
 import sys
-import pythoncom
-from win32com.shell import shell
-from win32com import storagecon
 versions = []
 currentBuild = ''
 latestBuild = ''

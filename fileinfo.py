@@ -1,7 +1,6 @@
 import os
 import sys
 import pythoncom
-# from win32com.shell import shell
 from win32comext.shell import shell
 from win32com import storagecon
 
