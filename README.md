@@ -2,8 +2,8 @@
 
 **This is the Wololo Downgrader tool.**
 
- Homepage: https://cyanide-aoe2.github.io/wololo-downgrader
- Releases: https://github.com/cyanide-aoe2/wololo-downgrader/releases
+ Homepage: <a href="https://cyanide-aoe2.github.io/wololo-downgrader">https://cyanide-aoe2.github.io/wololo-downgrader</a><br>
+ Releases: <a href="https://github.com/cyanide-aoe2/wololo-downgrader/releases">https://github.com/cyanide-aoe2/wololo-downgrader/releases</a>
 
 
 <b>This downgrader is licensed as Beerware.</b>
