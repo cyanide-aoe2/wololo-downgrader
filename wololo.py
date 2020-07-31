@@ -67,7 +67,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     'so you can view replays recorded on previous versions. If you get banned, sued, shot, whatever, '
                     'I\'m not responsible.<br><br>'
                     'If the tool fails, you might be missing <a href="https://dotnet.microsoft.com/download/dotnet-core/current/runtime"><b>Microsoft Dotnet Runtime Core.</b></a> Download it, Install it, Restart your computer. Try again.<br><br>'
-                    'Built without care in two days using Python and PyQt5. Compiled for release using .<br><br>'
+                    'Built without care in two days using Python and PyQt5. Compiled for release using pyinstaller.<br><br>'
                     '<a href="https://www.buymeacoffee.com/cyanide"><b>Buy me a beer if you found this tool useful</b></a>')
 
         msg.setWindowTitle("Wololo Downgrader")
