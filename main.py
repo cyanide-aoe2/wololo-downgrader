@@ -9,6 +9,11 @@ import distutils
 import shutil
 import requests
 from distutils import dir_util
+import os
+import sys
+import pythoncom
+from win32com.shell import shell
+from win32com import storagecon
 versions = []
 currentBuild = ''
 latestBuild = ''
@@ -157,15 +162,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         return
 
     def prepareUpgrade(self):
-        if self.steamUsername.text() == '' or self.steamPassword.text() == '':
-            msg = QtWidgets.QMessageBox()
-            msg.setIcon(QtWidgets.QMessageBox.Critical)
-            msg.setText("Error")
-            msg.setInformativeText('Steam credentials missing')
-            msg.setWindowTitle("Error")
-            msg.exec_()
-            return
-
         idx = 0
         for each_version in self.versions:
             if self.currentBuild == str(each_version['build']):
@@ -257,8 +253,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 gamepath.write(aoe2exe)
             propgen = fileinfo.property_sets(aoe2exe)
             for name, properties in propgen:
-                for k,v in properties.items():
-                    if(k == '0x4'):
+                for k, v in properties.items():
+                    if k == '0x4':
                         self.currentBuild = v.split('.')[2]
                         self.versionLabel.setText('Current version: ' + self.currentBuild)
                         self.versionLabel.setVisible(True)

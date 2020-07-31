@@ -1,6 +1,8 @@
-import os, sys
+import os
+import sys
 import pythoncom
-from win32com.shell import shell
+# from win32com.shell import shell
+from win32comext.shell import shell
 from win32com import storagecon
 
 FORMATS = {
@@ -62,7 +64,5 @@ def property_sets(filepath):
 
 if __name__ == '__main__':
     for name, properties in property_sets(sys.argv[1]):
-        print(name)
         for k, v in properties.items():
-            print
-            "  ", k, "=>", v
+            print("  " + k + "=>" + v)
