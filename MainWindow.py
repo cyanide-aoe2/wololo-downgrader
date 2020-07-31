@@ -49,7 +49,7 @@ class Ui_MainWindow(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.performOperation = QtWidgets.QPushButton(MainWindow)
-        self.performOperation.setGeometry(QtCore.QRect(130, 490, 291, 41))
+        self.performOperation.setGeometry(QtCore.QRect(130, 470, 291, 41))
         self.performOperation.setObjectName("performOperation")
         self.label_3 = QtWidgets.QLabel(MainWindow)
         self.label_3.setGeometry(QtCore.QRect(20, 390, 561, 31))
@@ -68,13 +68,17 @@ class Ui_MainWindow(object):
         self.label_4.setGeometry(QtCore.QRect(20, 290, 561, 81))
         self.label_4.setWordWrap(True)
         self.label_4.setObjectName("label_4")
+        self.label_5 = QtWidgets.QLabel(MainWindow)
+        self.label_5.setGeometry(QtCore.QRect(400, 530, 201, 21))
+        self.label_5.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_5.setObjectName("label_5")
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Test"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Wololo Downgrader by cyanide"))
         self.browseButton.setText(_translate("MainWindow", "Browse for AoE2DE_s.exe"))
         self.versionLabel.setText(_translate("MainWindow", "Current Version: "))
         self.upgradeButton.setText(_translate("MainWindow", "Upgrade to"))
@@ -86,3 +90,4 @@ class Ui_MainWindow(object):
         self.uhdCheckbox.setText(_translate("MainWindow", "Include UHD/4K assets when downgrading/upgrading"))
         self.versionLabel_2.setText(_translate("MainWindow", "Available Versions"))
         self.label_4.setText(_translate("MainWindow", "<html><head/><body><p>Original files will be backed up automatically.</p><p>The downgrade/upgrade operation cannot jump versions currently. To go down by more than 1 version (eg: from 39515 to 37906), you need to go through each version. This is to ensure that the correct file versions are present. Future updates will allow jumping multiple versions in a single step.</p></body></html>"))
+        self.label_5.setText(_translate("MainWindow", "<html><head/><body><p><a href=\"https://cyanide-aoe2.github.io/wololo-downgrader\"><span style=\" text-decoration: underline; color:#0000ff;\">made by cyanide</span></a></p></body></html>"))
