@@ -1,10 +1,9 @@
 # wololo-downgrader
 
-**This is the Wololo Downgrader tool.**<br>
+**This is the Wololo Downgrader tool.**
 
-Latest releases and source code will be available at: <br>
-<a href="https://cyanide-aoe2.github.io/wololo-downgrader">
-https://cyanide-aoe2.github.io/wololo-downgrader
+ Homepage: https://cyanide-aoe2.github.io/wololo-downgrader
+ Releases: https://github.com/cyanide-aoe2/wololo-downgrader/releases
 
 
 <b>This downgrader is licensed as Beerware.</b>
