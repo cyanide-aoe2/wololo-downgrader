@@ -69,20 +69,28 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                     'If the tool fails, you might be missing <a href="https://dotnet.microsoft.com/download/dotnet-core/current/runtime"><b>Microsoft Dotnet Runtime Core.</b></a> Download it, Install it, Restart your computer. Try again.<br><br>'
                     'Built without care in two days using Python and PyQt5. Compiled for release using pyinstaller.<br><br>'
                     '<a href="https://www.buymeacoffee.com/cyanide"><b>Buy me a beer if you found this tool useful</b></a>')
-
         msg.setWindowTitle("Wololo Downgrader")
         msg.exec_()
+
+        output = os.system('dotnet --list-runtimes')
+        if output != 0:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setTextFormat(QtCore.Qt.RichText)
+            msg.setText('Dotnet Core Runtime is not installed. Please download it from here: <a href="https://dotnet.microsoft.com/download/dotnet-core/current/runtime">Microsoft</a>.<br><br>'
+                        'After installing, Dotnet Runtime Core, you will need to restart your computer before you can run the downgrader.')
+            msg.exec_()
         with open('version.txt') as version:
             current_version = int(version.read())
             url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/version.txt'
             latest_version = int(requests.get(url).content)
             if latest_version > current_version:
                 update = QtWidgets.QMessageBox()
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setTextFormat(QtCore.Qt.RichText)
-                msg.setText('Update available for the tool. Download it from:<br>'
+                update.setIcon(QtWidgets.QMessageBox.Information)
+                update.setTextFormat(QtCore.Qt.RichText)
+                update.setText('Update available for the tool. Download it from:<br>'
                             '<a href="https://cyanide-aoe2.github.io/wololo-downgrader/">https://cyanide-aoe2.github.io/wololo-downgrader/</a>')
-                msg.exec_()
+                update.exec_()
 
     def populateVersionList(self):
         # get the latest versionlist.json file (which has the details for every game update)
@@ -95,10 +103,21 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             for each_version in self.versions:
                 self.versionList.addItem(str(each_version['build']))
 
+    def build_file_list(self):
+        return 0
+
     def perform(self):
-        if self.operation == 1: # Downgrade
+        if self.operation == 1:  # Downgrade
             for each_command in self.commands:
                 output = os.system(each_command)
+                if output != 0:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setInformativeText(
+                        'Download failed. \n\nPossible issues: Incorrect username/password/two-factor-auth, missing files, Steam error, etc. Please try again later. \n\nThe tool will now close')
+                    msg.setIcon(QtWidgets.QMessageBox.Information)
+                    msg.setWindowTitle(" ")
+                    msg.exec_()
+                    sys.exit(0)
             self.performBackup()
 
         src = ''
@@ -116,7 +135,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         msg.setWindowTitle(" ")
         msg.exec_()
 
-        exit(0)
+        sys.exit(0)
 
     def performBackup(self):
         dst = ''
@@ -223,13 +242,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             if depot == '1039811':
                 if self.uhdCheckbox.isChecked():
                     self.filelists.append(file_path + depot + '.txt')
-                    command = 'start /wait cmd /c dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild + '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
+                    # command = 'start /wait cmd /k dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild + '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
+                    command = 'dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild + '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
                     self.commands.append(command)
                 else:
                     print('skipping uhd files')
             else:
                 self.filelists.append(file_path + depot + '.txt')
-                command = 'start /wait cmd /c dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild +  '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
+                # command = 'start /wait cmd /k dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild +  '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
+                command = 'dotnet third-party/depotdownloader/DepotDownloader.dll -app 813780 -depot ' + depot + ' -manifest ' + manifest + ' -filelist ' + file_path + depot + '.txt -dir "' + dst + 'dgtool/' + self.requiredBuild + '/" -username ' + self.steamUsername.text() + ' -password ' + self.steamPassword.text() + ' -remember-password'
                 self.commands.append(command)
         self.operation = 1  # Downgrade
         self.performOperation.setVisible(True)
