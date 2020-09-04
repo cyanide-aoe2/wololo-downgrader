@@ -9,6 +9,8 @@ import requests
 from distutils import dir_util
 import os
 import sys
+import wget
+from zipfile import ZipFile
 versions = []
 currentBuild = ''
 latestBuild = ''
@@ -91,6 +93,22 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 update.setText('Update available for the tool. Download it from:<br>'
                             '<a href="https://cyanide-aoe2.github.io/wololo-downgrader/">https://cyanide-aoe2.github.io/wololo-downgrader/</a>')
                 update.exec_()
+        with open('diffs_version.txt') as diffs_version:
+            diffs_current_version = int(diffs_version.read())
+            url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/diffs_version.txt'
+            diffs_latest_version = int(requests.get(url).content)
+            if diffs_latest_version > diffs_current_version:
+                update = QtWidgets.QMessageBox()
+                update.setIcon(QtWidgets.QMessageBox.Information)
+                update.setTextFormat(QtCore.Qt.RichText)
+                update.setText('Updated diff files available for the tool. Press OK to download the latest files.')
+                update.exec_()
+                url = 'https://raw.githubusercontent.com/cyanide-aoe2/wololo-downgrader/master/diffs.zip'
+                fname = 'diffs' + str(diffs_latest_version) + '.zip'
+                wget.download(url, fname)
+                os.rename('./diffs', './diffs_old')
+                with ZipFile('diffs.zip', 'r') as zip:
+                    zip.extractall()
 
     def populateVersionList(self):
         # get the latest versionlist.json file (which has the details for every game update)
