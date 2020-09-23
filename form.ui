@@ -6,54 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>556</height>
+    <width>857</width>
+    <height>773</height>
    </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>Wololo Downgrader by cyanide</string>
   </property>
-  <widget class="QPushButton" name="browseButton">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Browse for AoE2DE_s.exe</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="versionLabel">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>20</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Current Version: </string>
-   </property>
-  </widget>
-  <widget class="QListWidget" name="versionList">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>40</y>
-     <width>191</width>
-     <height>231</height>
-    </rect>
-   </property>
-  </widget>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../Desktop/kBP2BZFP_200x200.ico</normaloff>../../Desktop/kBP2BZFP_200x200.ico</iconset>
+  </property>
   <widget class="QPushButton" name="upgradeButton">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>80</y>
+     <x>350</x>
+     <y>170</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -65,8 +36,8 @@
   <widget class="QPushButton" name="downgradeButton">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>130</y>
+     <x>350</x>
+     <y>220</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -79,7 +50,7 @@
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>190</y>
+     <y>170</y>
      <width>113</width>
      <height>31</height>
     </rect>
@@ -95,7 +66,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>190</y>
+     <y>170</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -111,7 +82,7 @@
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>240</y>
+     <y>220</y>
      <width>113</width>
      <height>31</height>
     </rect>
@@ -127,7 +98,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>240</y>
+     <y>220</y>
      <width>111</width>
      <height>31</height>
     </rect>
@@ -142,8 +113,8 @@
   <widget class="QPushButton" name="performOperation">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>470</y>
+     <x>170</x>
+     <y>670</y>
      <width>291</width>
      <height>41</height>
     </rect>
@@ -155,14 +126,14 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>390</y>
+     <x>30</x>
+     <y>620</y>
      <width>561</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your Steam credentials are only used to download the files from Steam. This program is open-source and you can have a look at it here: &lt;a href=&quot; https://cyanide-aoe2.github.io/downgrader&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://cyanide-aoe2.github.io/downgrader&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Your Steam credentials are only used to download the files from Steam. This program is open-source and you can have a look at it here: &lt;a href=&quot; https://cyanide-aoe2.github.io/wololo-downgrader&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://cyanide-aoe2.github.io/wololo-downgrader&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="textFormat">
     <enum>Qt::RichText</enum>
@@ -173,12 +144,15 @@
    <property name="wordWrap">
     <bool>true</bool>
    </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QCheckBox" name="uhdCheckbox">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>440</y>
+     <x>310</x>
+     <y>280</y>
      <width>281</width>
      <height>17</height>
     </rect>
@@ -187,33 +161,17 @@
     <string>Include UHD/4K assets when downgrading/upgrading</string>
    </property>
   </widget>
-  <widget class="QLabel" name="versionLabel_2">
-   <property name="geometry">
-    <rect>
-     <x>410</x>
-     <y>10</y>
-     <width>171</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Available Versions</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>290</y>
+     <x>30</x>
+     <y>530</y>
      <width>561</width>
      <height>81</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Original files will be backed up automatically.&lt;/p&gt;&lt;p&gt;The downgrade/upgrade operation cannot jump versions currently. To go down by more than 1 version (eg: from 39515 to 37906), you need to go through each version. This is to ensure that the correct file versions are present. Future updates will allow jumping multiple versions in a single step.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Original files will be backed up automatically.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;The downgrade/upgrade operation cannot jump/skip versions currently.&lt;/span&gt; To go down by more than 1 version (eg: from 39515 to 37906), you need to go through each version. This is to ensure that the correct file versions are present. Future updates will allow jumping multiple versions in a single step.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>
@@ -222,10 +180,10 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>530</y>
-     <width>201</width>
-     <height>21</height>
+     <x>10</x>
+     <y>710</y>
+     <width>831</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
@@ -233,6 +191,157 @@
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="saveCredsCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>280</y>
+     <width>141</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Save Steam Credentials</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>320</y>
+     <width>561</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Steam Credentials will be stored in&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt; plaintext&lt;/span&gt; in the Wololo Downgrader folder. Only enable this if you are going through multiple versions and are too lazy to type/copy your credentials repeatedly. Once done, deselect the checkbox to remove the stored credentials or delete the 'steam_creds.txt' file manually from the Wololo Downgrader folder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>591</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QPushButton" name="browseButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse for AoE2DE_s.exe</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="versionLabel">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>50</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Current Version: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>561</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If you don't know where the file is, open Steam -&amp;gt; Library.&lt;/p&gt;&lt;p&gt;Find Age of Empires II: Definitive Edition. Right click on the game entry -&amp;gt; Manage -&amp;gt; Browse Local Files.&lt;/p&gt;&lt;p&gt;That is where you will find your AoE2DE_s.exe file.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>20</y>
+     <width>211</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="versionLabel_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>191</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;AoE2DE Versions.&lt;/p&gt;&lt;p&gt;Just for reference. Selecting any entry in this list will not downgrade you to that specific version (yet).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="versionList">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>191</width>
+      <height>281</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>430</y>
+     <width>561</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can drag-drop a replay file (.aoe2record file) into this window if you don't know which version you need to downgrade/upgrade to. The replay will be parsed and it will tell you the exact version you need to be at to view the replay. Only Multiplayer replays can be parsed.&lt;/p&gt;&lt;p&gt;Thanks to the &lt;a href=&quot;https://github.com/happyleavesaoc/aoc-mgz&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;aoc-mgz&lt;/span&gt;&lt;/a&gt; project and &lt;a href=&quot;https://aoe2.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;aoe2.net&lt;/span&gt;&lt;/a&gt; for this functionality.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="openExternalLinks">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
