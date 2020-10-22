@@ -1,5 +1,7 @@
 # wololo-downgrader
 
+![GitHub All Releases](https://img.shields.io/github/downloads/cyanide-aoe2/wololo-downgrader/total?style=plastic)
+
 **This is the Wololo Downgrader tool.**
 
  Homepage: <a href="https://cyanide-aoe2.github.io/wololo-downgrader">https://cyanide-aoe2.github.io/wololo-downgrader</a><br>
