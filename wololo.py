@@ -52,7 +52,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         event.accept()
 
     def dropEvent(self, event):
-        print('1')
         files = event.mimeData().urls()
         if len(files) > 1:
             msg = QtWidgets.QMessageBox()
@@ -66,32 +65,63 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         file = files[0].toLocalFile()
         self.statusBar().setVisible(True)
         with open(file, 'rb') as data:
-            match_id = None
-            try:
-                match_id = Summary(data).get_platform()['platform_match_id']
-            except:
+            summary = Summary(data)
+            if summary:
+                platform = summary.get_platform()
+            else:
                 msg = QtWidgets.QMessageBox()
                 msg.setIcon(QtWidgets.QMessageBox.Critical)
                 msg.setWindowTitle(' ')
                 msg.setTextFormat(QtCore.Qt.RichText)
-                text = 'Error reading replay file.'
+                text = 'Error reading replay file. Cannot analyse recordings against AI or from private games.'
                 msg.setText(text)
                 msg.exec_()
                 return
+            if platform:
+                match_id = platform['platform_match_id']
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setIcon(QtWidgets.QMessageBox.Critical)
+                msg.setWindowTitle(' ')
+                msg.setTextFormat(QtCore.Qt.RichText)
+                text = 'Error reading replay file. Cannot analyse recordings against AI or from private games.'
+                msg.setText(text)
+                msg.exec_()
+                return
+            if not match_id:
+                msg = QtWidgets.QMessageBox()
+                msg.setIcon(QtWidgets.QMessageBox.Critical)
+                msg.setWindowTitle(' ')
+                msg.setTextFormat(QtCore.Qt.RichText)
+                text = 'Error reading replay file. Cannot analyse recordings against AI or from private games.'
+                msg.setText(text)
+                msg.exec_()
+                return
+
             url = 'https://aoe2.net/api/match?uuid=' + match_id
             output = requests.get(url)
             if output.status_code == 200:
                 result = output.json()
                 version = result['version']
-                msg = QtWidgets.QMessageBox()
-                msg.setIcon(QtWidgets.QMessageBox.Information)
-                msg.setWindowTitle(' ')
-                msg.setTextFormat(QtCore.Qt.RichText)
-                text = 'Replay recorded on patch version: ' + version + '.'
-                msg.setText(text)
-                msg.exec_()
-                self.statusBar().setVisible(False)
-                return
+                if version:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setIcon(QtWidgets.QMessageBox.Information)
+                    msg.setWindowTitle(' ')
+                    msg.setTextFormat(QtCore.Qt.RichText)
+                    text = 'Replay recorded on patch version: ' + version + '.'
+                    msg.setText(text)
+                    msg.exec_()
+                    self.statusBar().setVisible(False)
+                    return
+                else:
+                    msg = QtWidgets.QMessageBox()
+                    msg.setIcon(QtWidgets.QMessageBox.Critical)
+                    msg.setWindowTitle(' ')
+                    msg.setTextFormat(QtCore.Qt.RichText)
+                    text = 'Error reading replay file. Cannot analyse recordings from private games.'
+                    msg.setText(text)
+                    msg.exec_()
+                    return
             else:
                 self.statusBar().setVisible(False)
                 return
