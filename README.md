@@ -7,6 +7,8 @@
  Homepage: <a href="https://cyanide-aoe2.github.io/wololo-downgrader">https://cyanide-aoe2.github.io/wololo-downgrader</a><br>
  Releases: <a href="https://github.com/cyanide-aoe2/wololo-downgrader/releases">https://github.com/cyanide-aoe2/wololo-downgrader/releases</a>
 
+**UPDATE:** I've received a report from a user that the downgrader is being flagged as malware by Windows Defender - Trojan:Win32/Fuerboos.E!cl. This seems to be related to the usage of PyInstaller which is being used to generate the .exe file from the Python Scripts. As there have been no changes to the code in the repository, users should feel free to keep using the downgrader without any worries. For future versions, I will be using a different packaging method and signing the binaries so that these issues do not arise. **Thanks for the report, jwp!**
+
 
 <b>This downgrader is licensed as Beerware.</b>
 
